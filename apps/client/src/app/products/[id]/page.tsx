@@ -23,7 +23,7 @@ const product: ProductType = {
 export const generateMetadata = async ({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) => {
   // TODO:get the product from db
   // TEMPORARY
@@ -38,7 +38,7 @@ const ProductPage = async ({
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ color: string; size: string }>;
+  searchParams: Promise<{ color?: string; size?: string }>;
 }) => {
   const { size, color } = await searchParams;
 
@@ -47,7 +47,7 @@ const ProductPage = async ({
   return (
     <div className="flex flex-col gap-4 lg:flex-row md:gap-12 mt-12">
       {/* IMAGE */}
-      <div className="w-full lg:w-5/12 relative aspect-[2/3]">
+      <div className="w-full lg:w-5/12 relative aspect-2/3">
         <Image
           src={product?.images[selectedColor] || ""}
           alt={product.name}

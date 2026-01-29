@@ -9,6 +9,7 @@ import {
 import SearchBar from "./SearchBar";
 import { Bell, Home, ShoppingCart } from "lucide-react";
 import ShoppingCartIcon from "./ShoppingCartIcon";
+import ProfileButton from "./ProfileButton";
 
 const Navbar = () => {
   return (
@@ -38,7 +39,7 @@ const Navbar = () => {
           <SignInButton />
         </SignedOut>
         <SignedIn>
-          <UserButton />
+          <ProfileButton />
         </SignedIn>
       </div>
     </nav>
