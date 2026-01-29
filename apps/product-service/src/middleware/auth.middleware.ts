@@ -9,6 +9,12 @@ declare global {
     }
 }
 
+interface CustomJwtSessionClaims {
+    metadata?: {
+        role?: string;
+    };
+}
+
 export const shouldBeUser = (
     req: Request,
     res: Response,
