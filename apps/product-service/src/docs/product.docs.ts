@@ -70,7 +70,7 @@
  *                 example: ["Red", "Blue"]
  *               images:
  *                 type: object
- *                 example: {"main": "image1.jpg", "gallery": ["image2.jpg"]}
+ *                 example: {"Red": "image1.jpg", "Blue": "image2.jpg"}
  *               categorySlug:
  *                 type: string
  *                 example: "electronics"
@@ -85,8 +85,35 @@
  * @swagger
  * /products:
  *   get:
- *     summary: Retrieve a list of products
+ *     summary: Retrieve a list of products with optional filters
  *     tags: [Products]
+ *     parameters:
+ *       - in: query
+ *         name: sort
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc, oldest, newest]
+ *         description: Sort products by price (asc/desc) or creation date (oldest). Default is newest first.
+ *         example: newest
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *         description: Filter products by category slug (partial match)
+ *         example: electronics
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Search products by name (case-insensitive partial match)
+ *         example: bike
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Limit the number of products returned
+ *         example: 10
  *     responses:
  *       200:
  *         description: A list of products
@@ -98,11 +125,35 @@
  *                 type: object
  *                 properties:
  *                   id:
- *                     type: string
+ *                     type: integer
  *                   name:
  *                     type: string
+ *                   shortDescription:
+ *                     type: string
+ *                   description:
+ *                     type: string
  *                   price:
- *                     type: number
+ *                     type: integer
+ *                   sizes:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *                   colors:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *                   images:
+ *                     type: object
+ *                   categorySlug:
+ *                     type: string
+ *                   createdAt:
+ *                     type: string
+ *                     format: date-time
+ *                   updatedAt:
+ *                     type: string
+ *                     format: date-time
+ *       500:
+ *         description: Server error
  */
 
 /**

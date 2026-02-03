@@ -13,7 +13,7 @@ const options: swaggerJSDoc.Options = {
                 url: 'http://localhost:8000',
                 description: 'Development server',
             },
-        ],
+        ]
     },
     apis: ['./src/docs/*.ts'], // Path to the API docs
 };

@@ -20,7 +20,7 @@
  *             properties:
  *               name:
  *                 type: string
- *               description:
+ *               slug:
  *                 type: string
  *     responses:
  *       201:

@@ -43,7 +43,9 @@ app.get("/test", shouldBeUser, (req: Request, res: Response) => {
 
 app.use("/products", productRouter);
 app.use("/categories", categoryRouter);
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+    customCss: '.swagger-ui .topbar { display: none }'
+}));
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     console.error(err);
